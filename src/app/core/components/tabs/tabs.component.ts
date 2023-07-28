@@ -11,7 +11,6 @@ export class TabsComponent {
   constructor( private router: Router){
     this.router.events.subscribe(event => {
       if(event instanceof NavigationEnd){
-        console.log("EVENTO",event)
         switch (event.urlAfterRedirects){
           case "/":
             this.seleccionado = [true,false,false,false];
