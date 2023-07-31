@@ -13,7 +13,7 @@
       {
         "id": "1",
         "nombre":"Hamburguesa con queso",
-        "precio": 0,
+        "precio": 1000,
         "esVegano":false,
         "esCeliaco":false,
         "ingredientes": ["Carne de ternera","Pan Brioche","Queso"],
@@ -22,7 +22,7 @@
       {
         "id": "2",
         "nombre":"Hamburguesa especial",
-        "precio": 0,
+        "precio": 1500,
         "esVegano":false,
         "esCeliaco":false,
         "ingredientes": ["Carne de ternera","Pan Brioche","Queso", "Tomate", "Lechuga"],
@@ -31,7 +31,7 @@
       {
         "id": "3",
         "nombre":"Hamburguesa vegana",
-        "precio": 0,
+        "precio": 1300,
         "esVegano":true,
         "esCeliaco":false,
         "ingredientes": ["Medallón a base de lentejas","Pan Brioche","Tomate"],
@@ -40,7 +40,7 @@
       {
         "id": "4",
         "nombre":"Hamburguesa celíaca",
-        "precio": 0,
+        "precio": 1250,
         "esVegano":false,
         "esCeliaco":true,
         "ingredientes": ["Carne de ternera","Pan libre de tacc","Queso"],
@@ -49,7 +49,7 @@
       {
         "id": "5",
         "nombre":"Hamburguesa americana",
-        "precio": 0,
+        "precio": 3500,
         "esVegano":false,
         "esCeliaco":false,
         "ingredientes": ["Carne de ternera","Pan Brioche","Queso","Salsa secreta BBQ", "Panceta"],
@@ -58,7 +58,7 @@
       {
         "id": "6",
         "nombre":"Medallón platero",
-        "precio": 0,
+        "precio": 2000,
         "esVegano":true,
         "esCeliaco":true,
         "ingredientes": ["Medallón a base de lentejas","Tomate","Lechuga"],
