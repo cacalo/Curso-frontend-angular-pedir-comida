@@ -7,7 +7,7 @@ export class HeaderService {
 
   constructor() { }
 
-  titulo = signal("Título");
+  titulo = signal("");
   extendido: WritableSignal<boolean> = signal(false);
 
 }
