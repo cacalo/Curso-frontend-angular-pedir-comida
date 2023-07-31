@@ -39,7 +39,6 @@ export class TabsComponent {
   navegar(direccion:string){
     //Cambiar de página
     this.router.navigate([direccion])
-    console.log(direccion)
   }
 
 }
