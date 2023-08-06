@@ -16,4 +16,20 @@ export class ProductosService {
     if(productos) return productos;
     return [];
   }
+
+  async getAll():Promise<Producto[]>{
+    const res = await fetch("./../../../assets/data/database.json");
+    const resJson:Categoria[] = await res.json()
+    let productos:Producto[] = [];
+    resJson.forEach(categoria => {
+      productos = [...productos, ...categoria.productos]
+    })
+    return productos;
+  }
+
+  async getById(id:number):Promise<Producto | undefined>{
+    const productos = await this.getAll();
+    const productoElegido = productos.find(producto => producto.id === id);
+    return productoElegido ? productoElegido : undefined;
+  }
 }
