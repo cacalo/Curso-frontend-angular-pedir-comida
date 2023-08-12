@@ -15,10 +15,6 @@ export class CartService {
 
   carrito: Cart[] = []
 
-  getCarrito():Cart[]{
-    return this.carrito;
-  }
-
   agregarProducto(idProducto:number, cantidad: number, notas:string){
     const i = this.carrito.findIndex(producto => producto.idProducto === idProducto);
     if(i === -1){
