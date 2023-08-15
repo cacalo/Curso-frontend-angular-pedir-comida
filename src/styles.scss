@@ -57,6 +57,24 @@ app-root{
   flex-direction: column;
 }
 
+h1,h2,h3,h4,h5,h6{
+  font-weight: bold;
+}
+
 .margen-chico{
   margin: 10px;
+}
+
+.negrita{
+  font-weight: bold;
+}
+
+.flex-center{
+  display: flex;
+  justify-content: center;
+}
+
+.flex-apart{
+  display: flex;
+  justify-content: space-between;
 }

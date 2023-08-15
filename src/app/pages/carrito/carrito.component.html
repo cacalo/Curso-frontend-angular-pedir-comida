@@ -1,7 +1,53 @@
-<p>carrito works!</p>
-<p>Estamos en el carrito</p>
-<div *ngFor="let producto of cartService.carrito">
-  <p>Producto: {{producto.idProducto}} <button (click)="eliminarProducto(producto.idProducto)">X</button></p>
-  <app-contador-cantidad [cantidadInicial]="producto.cantidad" (cantidadCambiada)="cartService.cambiarCantidadProducto(producto.idProducto,$event)"></app-contador-cantidad>
-  <p *ngIf="producto.notas !== ''">{{producto.notas}}</p>
+<div id="tarjetas-container" class="margen-chico">
+  <div *ngFor="let producto of cartService.carrito, index as i" class="tarjeta-producto-container">
+    <ng-container *ngIf="productosCarrito[i]" >
+      <div id="izq" [ngStyle]="{'background-image': 'url('+productosCarrito[i].fotoUrl+')'}">
+        <div>
+          <img *ngIf="productosCarrito[i].esVegano" src="./../../../assets/icons/vegano.svg" alt="Apto vegano">
+          <img *ngIf="productosCarrito[i].esCeliaco" src="./../../../assets/icons/celiaco.png" alt="Apto celiaco">
+        </div>
+      </div>
+      <div id="centro">
+        <p class="negrita">{{productosCarrito[i].nombre}} </p>
+        <p *ngIf="producto.notas !== ''">{{producto.notas}}</p>
+        <app-contador-cantidad [cantidadInicial]="producto.cantidad" (cantidadCambiada)="cambiarCantidadProducto(producto.idProducto,$event)"></app-contador-cantidad>
+      </div>
+      <div id="der">
+        <button id="borrar" (click)="eliminarProducto(producto.idProducto)">
+          <img src="./../../../assets/icons/borrar.png" alt="">
+        </button>
+        <p class="negrita">${{productosCarrito[i].precio}}</p>
+      </div>
+    </ng-container>
+  </div>
 </div>
+<div class="flex-center">
+  <a id="mas" [routerLink]="['/']" routerLinkActive="router-link-active" >+</a>
+</div>
+<section class="margen-chico" id="informacion">
+  <h3>Dirección de envío</h3>
+  <div class="flex-apart" id="envios-container">
+    <div>
+      <h4>Calle Falsa 123</h4>
+      <p>San Lorenzo, Santa Fe, 2000</p>
+    </div>
+    <div>
+      <a [routerLink]="['/perfil']" routerLinkActive="router-link-active" >
+        <img src="./../../../assets/icons/lapiz.png" alt="Editar">
+      </a>
+    </div>
+  </div>
+  <div id="totales" class="flex-apart">
+    <div>
+      <p class="negrita">Subtotal</p>
+      <p>Delivery</p>
+      <p class="negrita">Total</p>
+    </div>
+    <div id="montos">
+      <p class="negrita">$<span>{{subtotal}}</span></p>
+      <p >$<span>{{delivery}}</span></p>
+      <p class="negrita">$<span>{{total}}</span></p>
+    </div>
+  </div>
+  <button id="enviar">Enviar mensaje</button>
+</section>

@@ -20,7 +20,7 @@
   img{
     height: 20px;
     margin-bottom: 5px;
-    background-color: rgb(182, 255, 180);
+    background-color: variables.$color-sello-comida;
     border-radius: 50px;
     &:first-child{
       margin-left: 5px;
