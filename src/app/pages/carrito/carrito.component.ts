@@ -6,6 +6,7 @@ import { ContadorCantidadComponent } from "../../core/components/contador-cantid
 import { Producto } from 'src/app/core/interfaces/productos';
 import { ProductosService } from 'src/app/core/services/productos.service';
 import { RouterModule } from '@angular/router';
+import { PerfilService } from 'src/app/core/services/perfil.service';
 
 @Component({
     selector: 'app-carrito',
@@ -18,6 +19,7 @@ export class CarritoComponent {
   headerService = inject(HeaderService);
   cartService = inject(CartService);
   productosService = inject(ProductosService);
+  perfilService = inject(PerfilService);
 
   productosCarrito:Producto[]= [];
 
