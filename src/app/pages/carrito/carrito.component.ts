@@ -65,7 +65,7 @@ export class CarritoComponent {
 `
     }
     const mensaje = `
-Hola! Soy ${this.perfilService.perfil()?.nombre}, y re quiero hacer el siguiente pedido:
+Hola! Soy ${this.perfilService.perfil()?.nombre}, y te quiero hacer el siguiente pedido:
 ${pedido}
 Si te querés comunicar conmigo hacelo al Nº del que te hablo o al ${this.perfilService.perfil()?.telefono}.
 La dirección de envío es: ${this.perfilService.perfil()?.direccion} - ${this.perfilService.perfil()?.detalleEntrega}.
