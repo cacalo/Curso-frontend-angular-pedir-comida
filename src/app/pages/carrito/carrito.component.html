@@ -1,3 +1,4 @@
+<ng-container *ngIf="cartService.carrito.length !== 0, else sinCarrito">
 <div id="tarjetas-container" class="margen-chico">
   <div *ngFor="let producto of cartService.carrito, index as i" class="tarjeta-producto-container">
     <ng-container *ngIf="productosCarrito[i]" >
@@ -55,5 +56,17 @@
       <p class="negrita">$<span>{{total}}</span></p>
     </div>
   </div>
-  <button id="enviar">Enviar mensaje</button>
+  <button id="enviar" (click)="enviarMensaje()">Enviar mensaje</button>
 </section>
+</ng-container>
+<ng-template #sinCarrito>
+  <h2>Tu carrito está vacío</h2>
+</ng-template>
+
+<dialog method="modal" #dialog>
+  <p>¿Pudiste realizar el pedido?</p>
+  <div>
+    <button (click)="finalizarPedido()"><span>Sí</span><span>Reiniciar pedido</span></button>
+    <button (click)="editarPedido()"><span>No</span><span>Editar pedido</span></button>
+  </div>
+</dialog>

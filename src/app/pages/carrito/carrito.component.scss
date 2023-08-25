@@ -1,5 +1,11 @@
 @use "./../../../assets/styles/variables.scss";
 
+h2{
+  margin-top: 50px;
+  font-size: xx-large;
+  text-align: center;
+}
+
 #tarjetas-container{
   display: flex;
   flex-direction: column;
@@ -100,4 +106,35 @@
   padding: 15px;
   border-radius: 10px;
   font-weight: bold;
+}
+
+dialog{
+  background-color: variables.$color-principal-claro;
+  border-radius: 10px;
+  border: unset;
+  box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.156);
+  div{
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-around;
+  }
+  button{
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    width: 130px;
+    &:first-of-type{
+      background-color: rgb(211, 255, 211);
+    }
+    &:last-of-type{
+      background-color: rgb(255, 211, 211);
+    }
+    span:first-child{
+      font-size: x-large;
+    }
+  }
+  p{
+    font-size: x-large;
+    text-align: center;
+  }
 }
