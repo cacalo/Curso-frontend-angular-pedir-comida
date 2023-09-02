@@ -5,7 +5,7 @@
   align-items: center;
   height: 30px;
   background-color: variables.$color-principal-claro;
-  border-radius: 25px;
+  border-radius: variables.$border-radius-chico;
   margin: 20px 10%;
   padding: 5px 10px;
   input{

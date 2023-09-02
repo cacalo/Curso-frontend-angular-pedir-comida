@@ -36,7 +36,7 @@ ul li {
 
 textarea{
   display: block;
-  border-radius: 20px;
+  border-radius: variables.$border-radius-chico;
   border: unset;
   background-color: variables.$color-principal-claro;
   margin-top: 10px;
@@ -52,7 +52,7 @@ textarea{
 
 button{
   width: 100%;
-  border-radius: 20px;
+  border-radius: variables.$border-radius-chico;
   border: unset;
   background-color: variables.$color-principal-claro;
   font-size: larger;

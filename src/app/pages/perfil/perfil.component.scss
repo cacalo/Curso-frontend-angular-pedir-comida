@@ -21,7 +21,7 @@ button{
   font-weight: bold;
   background-color: variables.$color-principal-claro;
   border: 1px solid black;
-  border-radius: 25px;
+  border-radius: variables.$border-radius-chico;
   cursor: pointer;
   &:disabled{
     background-color: rgb(217, 217, 217);
