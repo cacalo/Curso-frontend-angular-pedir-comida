@@ -42,7 +42,7 @@
     </div>
     <div>
       <a [routerLink]="['/perfil']" routerLinkActive="router-link-active" >
-        <img src="./../../../assets/icons/lapiz.png" alt="Editar">
+        <img id="boton-editar-direccion" src="./../../../assets/icons/lapiz.png" alt="Editar">
       </a>
     </div>
   </div>
@@ -58,7 +58,7 @@
       <p class="negrita">${{total}}</p>
     </div>
   </div>
-  <button id="enviar" (click)="enviarMensaje()">Enviar mensaje</button>
+  <button id="enviar" (click)="enviarMensaje()">Realizar pedido</button>
 </section>
 </ng-container>
 <ng-template #sinCarrito>
