@@ -5,7 +5,6 @@ import { TarjetaArticuloComponent } from 'src/app/core/components/tarjeta-articu
 import { Producto } from 'src/app/core/interfaces/productos';
 import { CategoriasService } from 'src/app/core/services/categorias.service';
 import { HeaderService } from 'src/app/core/services/header.service';
-import { ProductosService } from 'src/app/core/services/productos.service';
 
 @Component({
   selector: 'app-rubro',
@@ -16,7 +15,6 @@ import { ProductosService } from 'src/app/core/services/productos.service';
 })
 export class RubroComponent {
   headerService = inject(HeaderService);
-  productosService = inject(ProductosService);
   categoriasService = inject(CategoriasService);
   ac = inject(ActivatedRoute);
   productos:WritableSignal<Producto[]> = signal([])
