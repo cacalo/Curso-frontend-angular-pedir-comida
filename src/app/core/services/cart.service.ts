@@ -15,7 +15,7 @@ export class CartService {
         const fechaGuardado = new Date(carritoGuardado.fecha);
         const fecha = new Date();
         if(fecha.getTime() - fechaGuardado.getTime() > 1000*60*60*24*this.config.configuracion().diasVencimientoCarrito){
-          localStorage.removeItem("cart");
+          this.vaciar();
         } else {
           this.carrito = carritoGuardado.productos;
         }
@@ -38,7 +38,7 @@ export class CartService {
 
   eliminarProducto(idProducto:number){
     this.carrito = this.carrito.filter(producto => producto.idProducto !== idProducto);
-    if(this.carrito.length === 0) return localStorage.clear();
+    if(this.carrito.length === 0) return localStorage.removeItem("cart");
     this.actualizarAlmacenamiento();
   }
 
@@ -62,7 +62,7 @@ export class CartService {
 
   vaciar(){
     this.carrito = [];
-    localStorage.clear();
+    localStorage.removeItem("cart");
   }
 
 }
