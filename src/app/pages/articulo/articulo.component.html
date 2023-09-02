@@ -1,5 +1,5 @@
 <img id="fotoProducto" src="{{producto?.fotoUrl}}" alt="{{producto?.nombre}}">
-<div class="margen-chico">
+<section class="margen-chico">
   <ul>
     <span>Ingredientes: </span>
     <li *ngFor="let ingrediente of producto?.ingredientes">{{ingrediente}}</li>
@@ -21,4 +21,4 @@
     <app-contador-cantidad (cantidadCambiada)="cantidad.set($event)"></app-contador-cantidad>
   </div>
   <button (click)="agregarAlCarrito()">Agregar al carrito</button>
-</div>
+</section>
