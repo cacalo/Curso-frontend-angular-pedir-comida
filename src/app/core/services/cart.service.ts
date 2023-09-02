@@ -1,20 +1,20 @@
 import { Injectable } from '@angular/core';
 import { Cart } from '../interfaces/carrito';
+import { ConfigService } from './config.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
 
-  constructor() {
+  constructor(private config:ConfigService) {
     const cart = localStorage.getItem("cart");
     if(cart) {
       const carritoGuardado = JSON.parse(cart);
       if(carritoGuardado){
         const fechaGuardado = new Date(carritoGuardado.fecha);
         const fecha = new Date();
-        const dias = 4; //Dias de vencimiento del carrito;
-        if(fecha.getTime() - fechaGuardado.getTime() > 1000*60*60*24*dias){
+        if(fecha.getTime() - fechaGuardado.getTime() > 1000*60*60*24*this.config.configuracion().diasVencimientoCarrito){
           localStorage.removeItem("cart");
         } else {
           this.carrito = carritoGuardado.productos;

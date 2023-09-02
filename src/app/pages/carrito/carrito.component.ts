@@ -7,7 +7,8 @@ import { Producto } from 'src/app/core/interfaces/productos';
 import { ProductosService } from 'src/app/core/services/productos.service';
 import { Router, RouterModule } from '@angular/router';
 import { PerfilService } from 'src/app/core/services/perfil.service';
-import { NUMERO_WHATSAPP } from 'src/app/core/contantes/telefono';
+import { NUMERO_WHATSAPP } from 'src/app/core/constantes/telefono';
+import { ConfigService } from 'src/app/core/services/config.service';
 
 @Component({
     selector: 'app-carrito',
@@ -21,12 +22,12 @@ export class CarritoComponent {
   cartService = inject(CartService);
   productosService = inject(ProductosService);
   perfilService = inject(PerfilService);
+  configService = inject(ConfigService);
   router = inject(Router);
 
   productosCarrito:WritableSignal<Producto[]>= signal([]);
 
   subtotal = 0;
-  delivery = 100;
   total = 0;
   @ViewChild("dialog") dialog!: ElementRef<HTMLDialogElement>;
 
@@ -49,7 +50,7 @@ export class CarritoComponent {
     for (let i = 0; i < this.cartService.carrito.length; i++) {
       this.subtotal += this.productosCarrito()[i].precio * this.cartService.carrito[i].cantidad;
     }
-    this.total = this.subtotal + this.delivery;
+    this.total = this.subtotal + this.configService.configuracion().costoEnvio;
   }
 
   cambiarCantidadProducto(id:number,cantidad:number){
