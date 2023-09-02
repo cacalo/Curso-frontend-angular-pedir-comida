@@ -6,13 +6,14 @@ import { HeaderService } from 'src/app/core/services/header.service';
 import { ProductosService } from 'src/app/core/services/productos.service';
 import { TarjetaArticuloComponent } from "../../core/components/tarjeta-articulo/tarjeta-producto.component";
 import { Producto } from 'src/app/core/interfaces/productos';
+import { RouterModule } from '@angular/router';
 
 @Component({
     selector: 'app-buscar',
     templateUrl: './buscar.component.html',
     styleUrls: ['./buscar.component.scss'],
     standalone: true,
-    imports: [CommonModule, FormsModule, TarjetaArticuloComponent]
+    imports: [CommonModule, FormsModule, TarjetaArticuloComponent,RouterModule]
 })
 export class BuscarComponent {
   headerService = inject(HeaderService);
