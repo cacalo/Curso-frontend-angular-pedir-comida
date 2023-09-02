@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, WritableSignal, inject, signal } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { TarjetaArticuloComponent } from 'src/app/core/components/tarjeta-articulo/tarjeta-producto.component';
 import { Producto } from 'src/app/core/interfaces/productos';
@@ -19,7 +19,7 @@ export class RubroComponent {
   productosService = inject(ProductosService);
   categoriasService = inject(CategoriasService);
   ac = inject(ActivatedRoute);
-  productos:Producto[] = []
+  productos:WritableSignal<Producto[]> = signal([])
 
 
   ngOnInit(): void {
@@ -28,7 +28,7 @@ export class RubroComponent {
         this.categoriasService.getById(parseInt(params['id']))
         .then(categoria =>{
           if(categoria) {
-            this.productos = categoria.productos;
+            this.productos.set(categoria.productos);
             this.headerService.titulo.set(categoria.nombre);
           }})
       }
