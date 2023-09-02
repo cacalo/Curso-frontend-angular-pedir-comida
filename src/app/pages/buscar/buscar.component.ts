@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, WritableSignal, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Busqueda } from 'src/app/core/interfaces/busqueda';
 import { HeaderService } from 'src/app/core/services/header.service';
@@ -17,11 +17,11 @@ import { Producto } from 'src/app/core/interfaces/productos';
 export class BuscarComponent {
   headerService = inject(HeaderService);
   productosService = inject(ProductosService);
-  productos:Producto[] = []
+  productos:WritableSignal<Producto[]> = signal([])
 
   ngOnInit(): void {
     this.headerService.titulo.set("Buscar");
-    this.productosService.getAll().then(res => this.productos = res);
+    this.productosService.getAll().then(res => this.productos.set(res));
   }
 
   parametrosBusqueda:Busqueda = {
@@ -31,7 +31,7 @@ export class BuscarComponent {
   }
 
   async buscar(){
-    this.productos = await this.productosService.buscar(this.parametrosBusqueda);
+    this.productos.set(await this.productosService.buscar(this.parametrosBusqueda));
   }
 
 }

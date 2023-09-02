@@ -9,7 +9,6 @@ export class ConfigService {
   constructor() {
     fetch("././../../../assets/data/configuracion.json").then(res => {
       res.json().then(resJson=>{
-        console.log(resJson)
         this.configuracion.set(resJson);
       })
     })

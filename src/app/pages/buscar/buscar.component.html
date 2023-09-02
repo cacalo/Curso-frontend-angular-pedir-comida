@@ -17,10 +17,13 @@
   </div>
 </div>
 </form>
-<div id="contenedor-productos">
+<div id="contenedor-productos" *ngIf="productos().length !== 0; else sinResultado">
   <app-tarjeta-producto
-  *ngFor="let producto of productos"
+  *ngFor="let producto of productos()"
   [producto]="producto">
 </app-tarjeta-producto>
 </div>
+<ng-template #sinResultado>
+  <h2>No se encontraron resultados para tu búsqueda</h2>
+</ng-template>
 </section>
