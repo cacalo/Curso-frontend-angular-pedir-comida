@@ -34,6 +34,7 @@ footer, header, hgroup, menu, nav, section {
 body {
 	line-height: 1;
   width: 100vw;
+  height: 100svh;
   overflow-x: hidden;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: variables.$color-texto;
@@ -55,7 +56,6 @@ table {
 }
 
 app-root{
-  height: 100svh;
   display: flex;
   flex-direction: column;
 }
