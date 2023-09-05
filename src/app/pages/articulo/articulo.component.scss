@@ -40,8 +40,12 @@ textarea{
   border: unset;
   background-color: variables.$color-principal-claro;
   margin-top: 10px;
-  width: 100%;
   resize:vertical;
+  width: calc(100% - 30px);
+  padding: 15px;
+  &:focus{
+    outline: none;
+  }
 }
 
 #cantidad-container{
