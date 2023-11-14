@@ -19,10 +19,14 @@ export class BuscarComponent {
   headerService = inject(HeaderService);
   productosService = inject(ProductosService);
   productos:WritableSignal<Producto[]> = signal([])
+  cargando= signal(true);
 
   ngOnInit(): void {
     this.headerService.titulo.set("Buscar");
-    this.productosService.getAll().then(res => this.productos.set(res));
+    this.productosService.getAll().then(res => {
+      this.productos.set(res);
+      this.cargando.set(false);
+    });
   }
 
   parametrosBusqueda:Busqueda = {
@@ -32,7 +36,9 @@ export class BuscarComponent {
   }
 
   async buscar(){
+    this.cargando.set(true);
     this.productos.set(await this.productosService.buscar(this.parametrosBusqueda));
+    this.cargando.set(false);
   }
 
 }

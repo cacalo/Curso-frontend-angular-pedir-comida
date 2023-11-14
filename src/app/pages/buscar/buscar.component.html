@@ -17,15 +17,24 @@
   </div>
 </div>
 </form>
-<div id="contenedor-productos" *ngIf="productos().length !== 0; else sinResultado">
+@defer (when !cargando()){
+
+@if (productos().length !== 0) {
+<div id="contenedor-productos">
+  @for (producto of productos(); track producto) {
   <app-tarjeta-producto
-  *ngFor="let producto of productos()"
   [producto]="producto"
   [routerLink]="['/articulo',producto.id]"
   >
 </app-tarjeta-producto>
+}
 </div>
-<ng-template #sinResultado>
+} @else {
   <h2>Tu búsqueda no arrojó ningun resultado</h2>
-</ng-template>
+}
+} @loading (minimum 500ms) {
+  <div class="flex-center">
+    <img src="./../../../assets/icons/spinner.svg" alt="Cargando">
+  </div>
+}
 </section>

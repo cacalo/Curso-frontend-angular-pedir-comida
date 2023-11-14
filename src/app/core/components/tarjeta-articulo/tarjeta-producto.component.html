@@ -1,14 +1,20 @@
 <div id="container">
   <div id="foto" [ngStyle]="{'background-image': 'url('+producto.fotoUrl+')'}">
-    <img *ngIf="producto.esCeliaco" src="./../../../../assets/icons/celiaco.png" alt="Apto celíaco">
-    <img *ngIf="producto.esVegano" src="./../../../../assets/icons/vegano.svg" alt="Apto vegano">
+    @if (producto.esCeliaco) {
+<img src="./../../../../assets/icons/celiaco.png" alt="Apto celíaco">
+}
+    @if (producto.esVegano) {
+<img src="./../../../../assets/icons/vegano.svg" alt="Apto vegano">
+}
   </div>
   <div id="detalles">
     <h4>{{producto.nombre}}</h4>
     <ul>
-      <li *ngFor="let ingrediente of producto.ingredientes">
+      @for (ingrediente of producto.ingredientes; track ingrediente) {
+  <li>
         {{ingrediente}}
       </li>
+}
     </ul>
     <p id="precio">${{producto.precio}}</p>
   </div>

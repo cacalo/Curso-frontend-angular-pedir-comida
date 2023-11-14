@@ -1,17 +1,26 @@
-<ng-container *ngIf="cartService.carrito.length !== 0, else sinCarrito">
+@if (cartService.carrito.length !== 0) {
+
     <section>
   <div id="tarjetas-container" class="margen-chico">
-    <div *ngFor="let producto of cartService.carrito, index as i" class="tarjeta-producto-container">
-      <ng-container *ngIf="productosCarrito()[i]" >
+    @for (producto of cartService.carrito; track producto; let i = $index) {
+  <div class="tarjeta-producto-container">
+      @if (productosCarrito()[i]) {
+
         <div id="izq" [ngStyle]="{'background-image': 'url('+productosCarrito()[i].fotoUrl+')'}">
           <div>
-            <img *ngIf="productosCarrito()[i].esVegano" src="./../../../assets/icons/vegano.svg" alt="Apto vegano">
-            <img *ngIf="productosCarrito()[i].esCeliaco" src="./../../../assets/icons/celiaco.png" alt="Apto celiaco">
+            @if (productosCarrito()[i].esVegano) {
+<img src="./../../../assets/icons/vegano.svg" alt="Apto vegano">
+}
+            @if (productosCarrito()[i].esCeliaco) {
+<img src="./../../../assets/icons/celiaco.png" alt="Apto celiaco">
+}
           </div>
         </div>
         <div id="centro">
           <p class="negrita">{{productosCarrito()[i].nombre}} </p>
-          <p *ngIf="producto.notas !== ''">{{producto.notas}}</p>
+          @if (producto.notas !== '') {
+<p>{{producto.notas}}</p>
+}
           <app-contador-cantidad [cantidadInicial]="producto.cantidad" (cantidadCambiada)="cambiarCantidadProducto(producto.idProducto,$event)"></app-contador-cantidad>
         </div>
         <div id="der">
@@ -20,8 +29,10 @@
           </button>
           <p class="negrita">${{productosCarrito()[i].precio}}</p>
         </div>
-      </ng-container>
+
+}
     </div>
+}
   </div>
   <div class="flex-center">
     <a id="mas" [routerLink]="['/']" routerLinkActive="router-link-active" >+</a>
@@ -31,14 +42,14 @@
   <h3>Dirección de envío</h3>
   <div class="flex-apart" id="envios-container">
     <div>
-      <ng-container *ngIf="perfilService.perfil(), else sinDatosEnvio">
+      @if (perfilService.perfil()) {
+
         <h4>{{perfilService.perfil()!.nombre}}</h4>
         <p>{{perfilService.perfil()!.direccion}} - {{perfilService.perfil()?.telefono}}</p>
         <p>{{perfilService.perfil()!.detalleEntrega}}</p>
-      </ng-container>
-      <ng-template #sinDatosEnvio>
+      } @else {
         <p>Ingresá tus datos de envío</p>
-      </ng-template>
+      }
     </div>
     <div>
       <a [routerLink]="['/perfil']" routerLinkActive="router-link-active" >
@@ -60,11 +71,12 @@
   </div>
   <button id="enviar" [disabled]="!perfilService.perfil()" (click)="enviarMensaje()">Realizar pedido</button>
 </section>
-</ng-container>
+
+} @else {
 <ng-template #sinCarrito>
   <h2>Tu carrito está vacío</h2>
 </ng-template>
-
+}
 <dialog method="modal" #dialog>
   <p>¿Pudiste realizar el pedido?</p>
   <div>
